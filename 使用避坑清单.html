@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>使用避坑清单 — AI实战模板合集</title>
+<style>
+:root{--bg:#fff;--text:#333;--h:#111;--muted:#888;--a:#7c3aed;--g:#059669;--r:#d32f2f;--border:#e5e5e5}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.9;max-width:760px;margin:0 auto;padding:40px 24px 80px}
+h1{font-size:28px;color:var(--h);margin-bottom:4px}
+h2{font-size:20px;color:var(--h);margin:36px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--border)}
+h3{font-size:16px;color:var(--h);margin:24px 0 10px}
+p{margin:10px 0;font-size:15px}
+ul,ol{padding-left:22px;margin:10px 0}
+li{margin:6px 0;font-size:15px}
+code{font-family:inherit;background:#f3f0ff;color:var(--a);padding:1px 6px;border-radius:4px;font-size:14px}
+.pitfall{background:#fff5f5;border:1px solid #fecaca;border-radius:10px;padding:16px 20px;margin:14px 0}
+.pitfall h3{margin:0 0 8px;color:var(--r);font-size:16px}
+.bad{color:var(--r)}
+.good{color:var(--g)}
+.checklist{background:#fafafa;border:2px solid var(--g);border-radius:12px;padding:20px 24px;margin:24px 0}
+.checklist h3{color:var(--g);margin-top:0}
+.checklist li{list-style:none;margin:8px 0;font-size:15px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:#fafafa;font-weight:600;color:var(--h)}
+.highlight{background:#ecfdf5;border-left:3px solid var(--g);padding:14px 18px;margin:16px 0;border-radius:0 8px 8px 0}
+footer{text-align:center;padding:40px 0 0;margin-top:40px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+
+<h1>AI 提示词使用避坑清单</h1>
+<p style="color:var(--muted)">15 个新手最容易犯的错误，每一条都来自真实翻车反馈</p>
+
+<h2>写在前面</h2>
+<p>同一个模板，有人用出来效果惊艳，有人用出来满篇废话。问题通常不在模板——在于<strong>使用时踩了坑</strong>。这份清单帮你少走弯路。</p>
+
+<h2>一、信息填写坑</h2>
+
+<div class="pitfall">
+<h3>坑 1：填空太敷衍</h3>
+<p><span class="bad">❌ 【核心卖点】好用 · 【目标人群】女生</span></p>
+<p>AI 看到"好用"和"女生"，只能靠猜。猜的结果就是——模板化的废话。</p>
+<p><span class="good">✅ 【核心卖点】按压出泡、氨基酸温和配方、学生党平价 39 元<br>✅ 【目标人群】18-25 岁大一到大四女生，月生活费 1500-2000，混油敏</span></p>
+<p><strong>原则：你给 AI 的信息质量决定了输出质量。垃圾进，垃圾出。</strong></p>
+</div>
+
+<div class="pitfall">
+<h3>坑 2：一次性全删再填</h3>
+<p>删掉模板提示文字后忘了填自己的内容，AI 收到残缺提示词。</p>
+<p><span class="good">✅ 逐项替换。改一项、检查一项。确保每个 {花括号} 都被换成了你自己的内容。</span></p>
+</div>
+
+<div class="pitfall">
+<h3>坑 3：信息前后矛盾</h3>
+<p><span class="bad">❌ 【价格】800 元 【瑕疵】全新无瑕疵</span> → 读者第一反应：骗子。</p>
+<p><span class="good">✅ 信息要自洽。全新的话解释为什么卖（中奖、公司发的用不上）。</span></p>
+</div>
+
+<h2>二、AI 工具选择坑</h2>
+
+<div class="pitfall">
+<h3>坑 4：用错 AI 工具</h3>
+<table>
+<tr><th>任务</th><th>推荐</th><th>不推荐</th></tr>
+<tr><td>短文案（小红书/朋友圈/闲鱼）</td><td>豆包、Kimi、DeepSeek</td><td>—</td></tr>
+<tr><td>长文章（2000 字以上）</td><td>DeepSeek、Claude、ChatGPT</td><td>豆包容易跑偏</td></tr>
+<tr><td>数据分析/选品分析</td><td>DeepSeek、Claude</td><td>豆包</td></tr>
+<tr><td>需要联网查资料</td><td>Kimi</td><td>豆包（默认不联网）</td></tr>
+</table>
+</div>
+
+<div class="pitfall">
+<h3>坑 5：只用免费 AI，无视能力上限</h3>
+<p>连续 3 次生成的答案都不满意，换一个更强的 AI 工具试试。大概率不是提示词有问题，是模型能力不够。</p>
+</div>
+
+<div class="pitfall">
+<h3>坑 6：AI "胡说八道"时你没发现</h3>
+<p><strong>识别信号</strong>：数据精确到个位数但没标注来源、引用你不认识的书籍/研究/人名、通篇没有一次说"我不确定"。</p>
+<p><span class="good">✅ 关键数据自己核实。涉及书名、法律、医学、投资——一定要复查。</span></p>
+</div>
+
+<h2>三、输出质量坑</h2>
+
+<div class="pitfall">
+<h3>坑 7：拿到第一版就满意，不迭代</h3>
+<p>AI 第一版通常是"最安全但最平庸"的版本。<strong>最好的内容在第二到第三轮。</strong></p>
+</div>
+
+<div class="pitfall">
+<h3>坑 8：AI 味道太重，不检查直接发</h3>
+<p>什么叫"AI 味道"："在当今社会""总而言之""值得注意的是""综上所述"、每段都以"首先/其次/最后"开头。</p>
+<p><span class="good">✅ 发之前自己读一遍。把"AI 才会说的词"换成你自己的话。让文字像人写的。</span></p>
+</div>
+
+<div class="pitfall">
+<h3>坑 9：不看平台规则，被限流/违规</h3>
+<table>
+<tr><th>平台</th><th>容易踩的坑</th></tr>
+<tr><td>小红书</td><td>"最""第一""最好"等极限词可能被判虚假宣传</td></tr>
+<tr><td>闲鱼</td><td>不能留微信号/QQ号（系统检测封号）</td></tr>
+<tr><td>抖音</td><td>医疗/金融/投资内容需资质</td></tr>
+<tr><td>公众号</td><td>标题党可能判诱导分享</td></tr>
+</table>
+</div>
+
+<div class="pitfall">
+<h3>坑 10：标签/关键词乱用</h3>
+<p><span class="bad">❌ 卖手工发夹带 #创业 #搞钱 #暴富</span> → 小红书算法判"副业引流"，限流。</p>
+<p><span class="good">✅ 用精准标签：#手工发夹 #韩系发饰 比 #穿搭 #ootd 效果好得多。</span></p>
+</div>
+
+<h2>四、使用习惯坑</h2>
+
+<div class="pitfall">
+<h3>坑 11：每次都从零开始</h3>
+<p><span class="good">✅ 常用信息（产品名/卖点/价格/人群）存备忘录里。每次直接粘贴替换。</span></p>
+</div>
+
+<div class="pitfall">
+<h3>坑 12：用完就关，不存好结果</h3>
+<p><span class="good">✅ 满意结果立刻复制到备忘录。建一个"我的 AI 文案库"，分类保存。</span></p>
+</div>
+
+<div class="pitfall">
+<h3>坑 13：一个模板用到死</h3>
+<p>卖手机用模板 2 好用，卖手工艺品还用它就不合适。模板是框架，不同产品要调整。</p>
+</div>
+
+<h2>五、认知坑</h2>
+
+<div class="pitfall">
+<h3>坑 14：期望 AI 一次命中</h3>
+<p>AI 不认识你的产品、不了解你的客户、不知道你的审美偏好。</p>
+<p><strong>正确的心理预期</strong>：第一版能用但不出彩 → 第二版明显变好 → 第三版大概率可以发。三版加起来不超过 10 分钟。</p>
+</div>
+
+<div class="pitfall">
+<h3>坑 15：以为买了模板就不用动脑</h3>
+<p>模板解决的是"怎么写"——不是"做什么"。你还是要思考：产品跟别人到底有什么不同？客户到底关心什么？</p>
+</div>
+
+<div class="checklist">
+<h3>⚡ 快速自查清单（发之前花 10 秒过一遍）</h3>
+<ul>
+<li>☐ 所有花括号都填了自己的内容？</li>
+<li>☐ 填的内容够具体吗（有没有"好用""实惠"这种模糊词）？</li>
+<li>☐ 信息前后矛盾吗（价格、成色、卖点逻辑自洽吗）？</li>
+<li>☐ 选的 AI 工具适合这个任务吗？</li>
+<li>☐ 发之前会自己读一遍吗？</li>
+</ul>
+<p style="margin-top:12px"><strong>5 个都打勾——稳了。</strong></p>
+</div>
+
+<footer>
+<p>AI 实战模板合集 v2.0 · 使用避坑清单</p>
+</footer>
+</body>
+</html>

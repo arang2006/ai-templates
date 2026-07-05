@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>提示词优化手册 — AI实战模板合集</title>
+<style>
+:root{--bg:#fff;--text:#333;--h:#111;--muted:#888;--a:#7c3aed;--g:#059669;--o:#ea580c;--border:#e5e5e5;--card:#fafafa}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.9;max-width:760px;margin:0 auto;padding:40px 24px 80px}
+h1{font-size:28px;color:var(--h);margin-bottom:4px}
+h2{font-size:20px;color:var(--h);margin:36px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--border)}
+h3{font-size:16px;color:var(--h);margin:24px 0 10px}
+p{margin:10px 0;font-size:15px}
+ul,ol{padding-left:22px;margin:10px 0}
+li{margin:6px 0;font-size:15px}
+code{font-family:inherit;background:#f3f0ff;color:var(--a);padding:1px 6px;border-radius:4px;font-size:14px}
+pre{background:#fafafa;border:1px solid var(--border);border-radius:10px;padding:16px 20px;font-size:13px;line-height:1.8;overflow-x:auto;margin:12px 0;color:#555}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+th{background:#fafafa;font-weight:600;color:var(--h)}
+.highlight{background:#ecfdf5;border-left:3px solid var(--g);padding:14px 18px;margin:16px 0;border-radius:0 8px 8px 0}
+.bad{color:#d32f2f}
+.good{color:var(--g)}
+footer{text-align:center;padding:40px 0 0;margin-top:40px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+
+<h1>AI 提示词优化手册</h1>
+<p style="color:var(--muted)">在模板基础上做调优，让 AI 输出真正贴合你的需求</p>
+
+<h2>为什么需要看这个</h2>
+<p>模板是"标准版"。但你的产品、你的风格、你的场景——是独一无二的。</p>
+<p>这份手册教你<strong>在模板基础上做调优</strong>，让 AI 输出真正贴合你的需求。看完之后，你不只会"用模板"，你会"改模板"。</p>
+
+<h2>一、提示词的基本结构</h2>
+<p>一个高质量的提示词由 <strong>4 个零件</strong> 组成：</p>
+
+<h3>零件 1：角色设定</h3>
+<pre>你是一个小红书爆款文案写手
+你是一个闲鱼卖货高手
+你是一个资深 HR 和简历优化专家</pre>
+<p><strong>为什么要设角色</strong>：你不设，AI 就用"通用人格"回答你。设了角色，AI 会自动调用该领域的知识库和表达习惯。</p>
+
+<h3>零件 2：输入信息</h3>
+<p><strong>关键原则：越具体越好。</strong></p>
+<table>
+<tr><th>模糊</th><th>具体</th></tr>
+<tr><td class="bad">卖点：好用</td><td class="good">卖点：按压出泡、不用起泡网，洗完不紧绷</td></tr>
+<tr><td class="bad">价格：不贵</td><td class="good">价格：39 元，比同类产品便宜 40%</td></tr>
+<tr><td class="bad">人群：女生</td><td class="good">人群：18-25 岁大一到大四女生，月生活费 1500-2000</td></tr>
+</table>
+
+<h3>零件 3：输出格式</h3>
+<pre>每条笔记需包含：
+① 抓人标题
+② 3-4 段正文
+③ 3-5 个话题标签
+④ 适当 emoji</pre>
+<p>你用什么符号标记不重要（①②③、1.2.3.、→ 都行），重要的是<strong>把结构说清楚</strong>。</p>
+
+<h3>零件 4：风格约束</h3>
+<pre>风格：真实体验风，像一个真的用过的人在安利</pre>
+
+<h2>二、6 个通用优化技巧</h2>
+
+<h3>技巧 1：加"反面要求"</h3>
+<p>光说"要怎样"不够，加上"不要怎样"效果更好。</p>
+<pre><strong>优化前：</strong>写 3 条小红书种草笔记
+
+<strong>优化后：</strong>写 3 条小红书种草笔记。禁止：假大空的形容词
+（"绝绝子""太好用了"）、品牌方口吻、超过 5 行的长段落。
+每条笔记必须像真人在分享，不像广告。</pre>
+
+<h3>技巧 2：给 AI 参考案例</h3>
+<p>AI 模仿能力极强。给它一个你喜欢的例子，它会学得很像。</p>
+
+<h3>技巧 3：控制长度</h3>
+<pre>每段不超过 4 行（手机阅读体验）
+全文控制在 1500 字左右
+每条朋友圈 100-150 字</pre>
+
+<h3>技巧 4：指定"信息密度"</h3>
+<pre>不要写废话。每一句要么提供信息、要么唤起情绪、
+要么推进逻辑。如果某句话删掉不影响理解——就不要写。</pre>
+
+<h3>技巧 5：分层输出</h3>
+<p>让 AI "先给大纲，再写全文"——你可以先审大纲，确认方向后再让它展开。</p>
+
+<h3>技巧 6：给 AI 一个"读者画像"</h3>
+<p>不光说"目标人群"，而是描述一个具体的人。</p>
+<pre><strong>不好的：</strong>目标人群：上班族
+
+<strong>好的：</strong>想象你正在写给一个叫小林的 26 岁女生看。
+她在二线城市做行政，月薪 6000，每天通勤一小时，
+想搞副业但不知道从哪开始。</pre>
+
+<h2>三、各模板专项优化（摘要）</h2>
+
+<h3>模板 1 · 小红书种草笔记</h3>
+<p>开头必须是真实场景，不是产品介绍。每提一个优点配一个"小槽点"。禁止"绝绝子""YYDS""姐妹们冲啊"。</p>
+
+<h3>模板 2 · 闲鱼商品描述</h3>
+<p>加"为什么卖"的真实理由。加只有真用户才知道的细节（"买来就贴了钢化膜"）。瑕疵不隐瞒。</p>
+
+<h3>模板 3 · 工作周报</h3>
+<p>禁止"负责XX工作"，改成"我做了XX，结果是XX"。每一项必须有数字。</p>
+
+<h3>模板 4 · 抖音带货脚本</h3>
+<p>写完后自己念一遍。念出来不像人话——重写。每句话不超过 15 个字。</p>
+
+<h3>模板 5 · PPT 大纲</h3>
+<p>每页只放一个核心观点 + 一个支撑数据。3 秒内说不出"这页在讲什么"就失败。</p>
+
+<h3>模板 6 · 朋友圈文案</h3>
+<p>7 条必须像 7 个不同的人写的。客户反馈那天——把原话放进去，别润色。</p>
+
+<h3>模板 7 · 简历优化</h3>
+<p>每段经历必须是具体的、可验证的。"这怎么证明？"——就是改失败了。</p>
+
+<h3>模板 8 · 公众号文章</h3>
+<p>前三句决定读者去留。不要"随着XX的发展"。第一句直接说反常识事实。</p>
+
+<h3>模板 9 · 电商选品</h3>
+<p>每个建议必须：具体卖什么 + 在哪拿货（平台+关键词） + 怎么卖出第一单。</p>
+
+<h3>模板 10 · 读书助手</h3>
+<p>AI 不确定时标注"这是我基于标题和作者背景的推测"。不要编造章节名称。</p>
+
+<h2>四、对话式优化</h2>
+<p>不满意 AI 的输出时，在同一个对话框继续发：</p>
+<table>
+<tr><th>你想</th><th>直接说</th></tr>
+<tr><td>改风格</td><td>"把语气改得更像大学生"</td></tr>
+<tr><td>加内容</td><td>"再加两条，每条侧重不同使用场景"</td></tr>
+<tr><td>删内容</td><td>"第三段太啰嗦了，精简到两句话"</td></tr>
+<tr><td>改结构</td><td>"把第一部分和第二部分互换位置"</td></tr>
+<tr><td>改细节</td><td>"把所有'产品'改成'宝藏'"</td></tr>
+<tr><td>重写某段</td><td>"第二段重新写，不要用'首先/其次/最后'"</td></tr>
+</table>
+
+<div class="highlight">💡 <strong>核心心法</strong>：把 AI 当一个超级聪明但完全不了解你的新同事。你越具体，它做得越好。</div>
+
+<h2>五、建立你自己的提示词</h2>
+
+<h3>自建提示词模板：</h3>
+<pre>你是一个 [角色]。请 [做什么]。
+
+【输入信息1】{待填}
+【输入信息2】{待填}
+
+输出格式：
+- XXX
+
+风格要求：
+- XXX
+
+禁止：
+- XXX</pre>
+
+<h3>五个自检问题：</h3>
+<ol>
+<li>AI 读完这段话，知道"自己是谁"吗？</li>
+<li>AI 知道"关于什么"吗（信息够具体吗）？</li>
+<li>AI 知道"怎么呈现"吗（格式够清楚吗）？</li>
+<li>AI 知道"什么语气"吗（风格有约束吗）？</li>
+<li>AI 知道"不能做什么"吗（有负面清单吗）？</li>
+</ol>
+<p><strong>五个都是"是"——这个提示词不会差。</strong></p>
+
+<footer>
+<p>AI 实战模板合集 v2.0 · 提示词优化手册</p>
+</footer>
+</body>
+</html>
