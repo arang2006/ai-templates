@@ -1,445 +1,316 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI实战模板合集 — 15个拿来就用的AI赚钱模板</title>
-<style>
-:root{--bg:#06060e;--card:#0c0c1a;--border:rgba(255,255,255,0.06);--text:#bbb;--h:#e8e8ed;--muted:#666;--a:#a78bfa;--a2:#e879f9;--g:#34d399;--o:#fb923c;--r:#f87171;--b:#38bdf8}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;overflow-x:hidden}
-.container{max-width:880px;margin:0 auto;padding:40px 20px 80px}
-
-/* ─── Hero ─── */
-.hero{text-align:center;padding:52px 20px 44px;position:relative}
-.hero .badge-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
-.hero .badge{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600}
-.badge-new{background:rgba(168,85,247,0.12);color:var(--a)}
-.badge-tested{background:rgba(52,211,153,0.12);color:var(--g)}
-.badge-free{background:rgba(56,189,248,0.12);color:var(--b)}
-.hero h1{font-size:clamp(26px,5vw,40px);font-weight:800;background:linear-gradient(135deg,#a78bfa,#e879f9 50%,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px}
-.hero .sub{color:var(--muted);font-size:16px;max-width:500px;margin:0 auto 24px}
-
-/* ─── 数据条 ─── */
-.stat-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
-.stat-item{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 24px;text-align:center;min-width:100px;flex:1;max-width:180px}
-.stat-item .num{font-size:30px;font-weight:700;color:var(--a)}
-.stat-item .lbl{font-size:12px;color:var(--muted);margin-top:4px}
-
-/* ─── 模板卡片 ─── */
-.section-title{text-align:center;color:var(--h);font-size:22px;margin:48px 0 24px}
-.t{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px 30px;margin:20px 0;transition:border .2s,transform .2s}
-.t:hover{border-color:rgba(168,85,247,0.2);transform:translateY(-1px)}
-.t-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
-.t-num{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0}
-.c1{background:rgba(168,85,247,0.15);color:var(--a)}
-.c2{background:rgba(232,121,249,0.15);color:var(--a2)}
-.c3{background:rgba(52,211,153,0.15);color:var(--g)}
-.c4{background:rgba(251,146,60,0.15);color:var(--o)}
-.c5{background:rgba(244,114,182,0.15);color:#f472b6}
-.c6{background:rgba(56,189,248,0.15);color:var(--b)}
-.c7{background:rgba(168,85,247,0.15);color:var(--a)}
-.c8{background:rgba(232,121,249,0.15);color:var(--a2)}
-.c9{background:rgba(52,211,153,0.15);color:var(--g)}
-.c10{background:rgba(251,146,60,0.15);color:var(--o)}
-.c11{background:rgba(56,189,248,0.15);color:var(--b)}
-.c12{background:rgba(244,114,182,0.15);color:#f472b6}
-.c13{background:rgba(168,85,247,0.15);color:var(--a)}
-.c14{background:rgba(52,211,153,0.15);color:var(--g)}
-.c15{background:rgba(251,146,60,0.15);color:var(--o)}
-.t h3{font-size:19px;color:var(--h)}
-.t-tags{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 8px 54px}
-.t-tags .tg{padding:3px 10px;border-radius:9px;font-size:11px}
-.tg-w{background:rgba(168,85,247,0.1);color:var(--a)}
-.tg-m{background:rgba(52,211,153,0.1);color:var(--g)}
-.tg-t{background:rgba(251,146,60,0.1);color:var(--o)}
-.t .what{color:var(--text);margin:0 0 18px 54px;font-size:15px}
-
-/* ─── Prompt 框 ─── */
-.pbox{background:#050510;border:1px solid rgba(168,85,247,0.12);border-radius:12px;margin:0 0 16px 54px;overflow:hidden}
-.pbox-h{padding:11px 18px;background:rgba(168,85,247,0.05);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.04)}
-.pbox-h span{font-size:13px;color:var(--a);font-weight:600}
-.btn-copy{padding:5px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:var(--muted);font-size:12px;cursor:pointer;transition:all .2s;white-space:nowrap}
-.btn-copy:hover{border-color:var(--a);color:var(--a)}
-.pbox-ctn{padding:18px 22px;font-size:14px;line-height:1.8;color:#9098b0;white-space:pre-wrap;font-family:"SF Mono","Cascadia Code","Consolas",monospace;background:#020208}
-.fill{display:inline-block;padding:2px 10px;border-radius:6px;border:1px dashed var(--g);background:rgba(52,211,153,0.06);color:var(--g);font-size:13px;font-family:inherit;outline:none;min-width:40px;transition:all .2s}
-.fill:focus{border-style:solid;background:rgba(52,211,153,0.12)}
-.fill::placeholder{color:rgba(52,211,153,0.3)}
-.use{margin:0 0 0 54px;font-size:13px;color:var(--muted)}
-.use strong{color:var(--h)}
-@media(max-width:600px){.t{padding:18px 14px}.t-tags,.what,.pbox,.use{margin-left:0}.hero h1{font-size:22px}.stat-item{min-width:70px}.stat-item .num{font-size:22px}}
-
-/* ─── FAQ ─── */
-.faq{margin:56px 0 32px}
-.faq h2{color:var(--h);margin-bottom:20px;text-align:center}
-.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 24px;margin:12px 0}
-.faq-item .q{color:var(--h);font-weight:600;margin-bottom:6px}
-.faq-item .a{color:var(--muted);font-size:14px;line-height:1.7}
-.faq-item .a strong{color:var(--g)}
-
-footer{text-align:center;padding:40px 0 0;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
-footer p{margin:4px 0}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>闲鱼卖货文案 AI 模板包</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --paper: #ffffff;
+      --ink: #172033;
+      --muted: #687386;
+      --line: #dfe6ef;
+      --blue: #2563eb;
+      --green: #16845d;
+      --yellow: #fff7df;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.75;
+    }
+    main {
+      width: min(760px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 30px 0 56px;
+    }
+    section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 14px 0;
+    }
+    .hero {
+      background: linear-gradient(135deg, #ffffff, #edf4ff);
+      padding: 30px 24px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #eaf2ff;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+    }
+    h1 {
+      margin: 16px 0 10px;
+      font-size: clamp(29px, 6vw, 42px);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 0 0 12px;
+      font-size: 23px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+    p { margin: 8px 0; }
+    .sub {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+    .list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .item {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+    .num {
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 800;
+    }
+    .item strong { display: block; margin-bottom: 2px; }
+    .item span { color: var(--muted); font-size: 14px; }
+    .example {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr 1.25fr;
+    }
+    .box {
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fbfdff;
+      white-space: pre-wrap;
+      font-size: 14px;
+    }
+    .input { background: var(--yellow); }
+    .output { background: #eef7ff; }
+    pre {
+      white-space: pre-wrap;
+      overflow-x: auto;
+      margin: 0;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      font-family: "Cascadia Code", Consolas, "Microsoft YaHei", monospace;
+      font-size: 14px;
+    }
+    .form {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    label {
+      display: grid;
+      gap: 6px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    input, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 11px 12px;
+      font: inherit;
+      color: var(--ink);
+      background: #fff;
+      outline: none;
+    }
+    textarea {
+      min-height: 76px;
+      resize: vertical;
+    }
+    input:focus, textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, .12);
+    }
+    button {
+      border: 0;
+      border-radius: 8px;
+      background: var(--blue);
+      color: #fff;
+      padding: 11px 16px;
+      font-weight: 800;
+      cursor: pointer;
+      margin: 0 0 12px;
+    }
+    .note {
+      border-left: 4px solid var(--green);
+      background: #eef9f3;
+      border-radius: 8px;
+      padding: 13px 15px;
+      color: #214838;
+      font-size: 14px;
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding-top: 18px;
+    }
+    @media (max-width: 680px) {
+      section { padding: 20px; }
+      .example { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
+  <main>
+    <section class="hero">
+      <span class="tag">新手填空式模板</span>
+      <h1>闲鱼商品描述不会写？</h1>
+      <p class="sub">把商品名、价格、成色、瑕疵填进去，用 AI 生成标题、描述、标签和交易提示。适合闲鱼新手上架二手物品、资料包、小商品。</p>
+    </section>
 
-<!-- ═══════ HERO ═══════ -->
-<div class="hero">
-  <div class="badge-row">
-    <span class="badge badge-new">2026 最新版</span>
-    <span class="badge badge-tested">已实测可用</span>
-    <span class="badge badge-free">免费工具就能用</span>
-  </div>
-  <h1>AI 实战模板合集</h1>
-  <p class="sub">15 个拿来就用的 AI 提示词模板。不用自己研究怎么写——复制、粘贴、改几个字，秒出结果。</p>
-</div>
+    <section>
+      <h2>你拿到的就是这 3 样</h2>
+      <div class="list">
+        <div class="item"><b class="num">1</b><div><strong>闲鱼商品描述模板</strong><span>复制到豆包、DeepSeek、Kimi、通义千问都能用。</span></div></div>
+        <div class="item"><b class="num">2</b><div><strong>完整示例</strong><span>用红米 K60 演示输入后会生成什么结果。</span></div></div>
+        <div class="item"><b class="num">3</b><div><strong>使用说明</strong><span>告诉你怎么填、怎么改、哪些话不要乱写。</span></div></div>
+      </div>
+    </section>
 
-<!-- ═══════ 教程导航 ═══════ -->
-<div style="max-width:500px;margin:0 auto 32px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center">
-  <a href="30秒上手AI工具.html" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(168,85,247,0.2);background:rgba(168,85,247,0.06);color:#a78bfa;text-decoration:none;font-size:13px;font-weight:600;transition:all .2s">🚀 30秒上手AI工具</a>
-  <a href="使用指南.html" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(168,85,247,0.2);background:rgba(168,85,247,0.06);color:#a78bfa;text-decoration:none;font-size:13px;font-weight:600;transition:all .2s">📖 使用指南</a>
-  <a href="使用说明书.html" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(52,211,153,0.2);background:rgba(52,211,153,0.06);color:#34d399;text-decoration:none;font-size:13px;font-weight:600;transition:all .2s">📚 使用说明书</a>
-  <a href="提示词优化手册.html" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(56,189,248,0.2);background:rgba(56,189,248,0.06);color:#38bdf8;text-decoration:none;font-size:13px;font-weight:600;transition:all .2s">🔧 提示词优化手册</a>
-  <a href="使用避坑清单.html" style="padding:8px 18px;border-radius:10px;border:1px solid rgba(251,146,60,0.2);background:rgba(251,146,60,0.06);color:#fb923c;text-decoration:none;font-size:13px;font-weight:600;transition:all .2s">⚠️ 使用避坑清单</a>
-</div>
+    <section>
+      <h2>示例：输入后会变成这样</h2>
+      <div class="example">
+        <div class="box input">输入：
+商品：红米 K60 12+256
+成色：九成新，用了 3 个月
+价格：800 元
+瑕疵：屏幕有一道轻微细划痕
+配件：原装充电器、手机壳</div>
+        <div class="box output">输出：
+标题：
+红米K60 12+256 九成新 学生自用 送原装充电器
 
-<!-- ═══════ 数据条 ═══════ -->
-<div class="stat-row">
-  <div class="stat-item"><div class="num">15</div><div class="lbl">精选模板</div></div>
-  <div class="stat-item"><div class="num">0</div><div class="lbl">需要编程基础</div></div>
-  <div class="stat-item"><div class="num">5+</div><div class="lbl">适配AI平台</div></div>
-  <div class="stat-item"><div class="num">&lt; 1 min</div><div class="lbl">复制就能用</div></div>
-</div>
+描述：
+📱 型号：红米 K60 12+256
+💡 使用情况：用了 3 个月，平时主要微信、刷视频、上课查资料
+✨ 成色：整体九成新，边框和后盖保存较好
+📦 配件：原装充电器、手机壳
+⚠️ 瑕疵：屏幕有一道轻微细划痕，正常使用不明显
 
-<!-- ═══════ 模板1 ═══════ -->
-<div class="t">
-  <div class="t-head"><div class="t-num c1">1</div><h3>AI 自动写小红书种草笔记</h3></div>
-  <div class="t-tags"><span class="tg tg-w">想做副业的人</span><span class="tg tg-m">3分钟/篇</span><span class="tg tg-t">豆包/DeepSeek/Kimi 通用</span></div>
-  <p class="what">输入产品名和卖点，秒出 3 条不同风格的小红书种草笔记——真实体验风、干货测评风、情感共鸣风，带 emoji 和话题标签。<strong style="color:var(--g)">实测有效。</strong></p>
-  <div class="pbox">
-    <div class="pbox-h"><span>📋 Prompt 模板</span><button class="btn-copy" onclick="cp(this)">📋 一键复制</button></div>
-    <div class="pbox-ctn">你是一个小红书爆款文案写手。请根据下面的产品信息，生成 3 条不同风格的小红书种草笔记。
+标签：
+#红米K60 #二手手机 #学生自用 #5G手机 #安卓手机</div>
+      </div>
+    </section>
 
-【产品名称】<span class="fill" contenteditable="true" data-d="输入产品名，比如：氨基酸洗面奶" onfocus="fo(this)" onblur="fb(this)">输入产品名，比如：氨基酸洗面奶</span>
-【核心卖点】<span class="fill" contenteditable="true" data-d="列出2-3个卖点，比如：温和不刺激、学生党平价" onfocus="fo(this)" onblur="fb(this)">列出2-3个卖点，比如：温和不刺激、学生党平价</span>
-【目标人群】<span class="fill" contenteditable="true" data-d="比如：学生党、上班族、宝妈" onfocus="fo(this)" onblur="fb(this)">比如：学生党、上班族、宝妈</span>
+    <section>
+      <h2>直接填写，再一键复制</h2>
+      <div class="form">
+        <label>商品名称
+          <input id="name" value="红米K60手机" placeholder="比如：红米K60手机">
+        </label>
+        <label>新旧程度
+          <input id="condition" value="九成新，使用了3个月" placeholder="比如：九成新，使用了3个月">
+        </label>
+        <label>想卖的价格
+          <input id="price" value="800元" placeholder="比如：800元">
+        </label>
+        <label>配件情况
+          <input id="accessories" value="原装充电器、手机壳" placeholder="比如：原装充电器、手机壳、包装盒">
+        </label>
+        <label>瑕疵/其他说明
+          <textarea id="flaw" placeholder="比如：屏幕有一道细划痕，不影响使用">屏幕有一道轻微细划痕，不影响使用</textarea>
+        </label>
+        <label>出售原因
+          <input id="reason" value="闲置不用" placeholder="比如：闲置不用、换了同类产品、搬家清理">
+        </label>
+      </div>
+      <button id="copy">复制已填好的提示词</button>
+      <pre id="prompt"></pre>
+    </section>
 
-每条笔记需包含：①抓人标题（数字/反问/痛点）②3-4段正文 ③真实体验口吻 ④3-5个热门话题标签 ⑤适当emoji
-风格：第1条真实体验风、第2条干货测评风、第3条情感共鸣风。请开始生成：</div>
-  </div>
-  <p class="use"><strong>📖 三步使用：</strong>① 绿色框直接改填 → ② 点"一键复制" → ③ 粘贴到豆包/DeepSeek/Kimi 对话框回车</p>
-</div>
+    <section>
+      <h2>怎么用</h2>
+      <div class="list">
+        <div class="item"><b class="num">1</b><div><strong>填写商品信息</strong><span>在上面的输入框里填商品、成色、价格、配件和瑕疵。</span></div></div>
+        <div class="item"><b class="num">2</b><div><strong>复制提示词</strong><span>点击“复制已填好的提示词”，复制的是完整内容。</span></div></div>
+        <div class="item"><b class="num">3</b><div><strong>粘贴到 AI</strong><span>豆包、DeepSeek、Kimi、通义千问任选一个。</span></div></div>
+        <div class="item"><b class="num">4</b><div><strong>检查后发布</strong><span>删掉不真实的句子，再配真实图片上架。</span></div></div>
+      </div>
+      <p class="note">说明：这不是软件，也不是课程；不承诺成交、不承诺爆单。它只帮你把商品信息整理成更清楚的发布文案。</p>
+    </section>
 
-<!-- ═══════ 模板2 ═══════ -->
-<div class="t">
-  <div class="t-head"><div class="t-num c2">2</div><h3>AI 闲鱼商品描述生成器</h3></div>
-  <div class="t-tags"><span class="tg tg-w">闲鱼卖家</span><span class="tg tg-m">1分钟/件</span><span class="tg tg-t">任何 AI 通用</span></div>
-  <p class="what">告诉 AI 你要卖什么，自动生成闲鱼标题+完整描述+标签+防骗提示。告别"九成新，很好用"。</p>
-  <div class="pbox">
-    <div class="pbox-h"><span>📋 Prompt 模板</span><button class="btn-copy" onclick="cp(this)">📋 一键复制</button></div>
-    <div class="pbox-ctn">你是一个闲鱼卖货高手。请生成一个完整的闲鱼商品发布内容。
+    <footer>闲鱼卖货文案 AI 模板包 · 极简版</footer>
+  </main>
+  <script>
+    const fields = ["name", "condition", "price", "accessories", "flaw", "reason"];
+    const prompt = document.getElementById("prompt");
 
-【商品名称】<span class="fill" contenteditable="true" data-d="输入商品名，比如：红米K60手机" onfocus="fo(this)" onblur="fb(this)">输入商品名，比如：红米K60手机</span>
-【新旧程度】<span class="fill" contenteditable="true" data-d="比如：九成新，用了3个月" onfocus="fo(this)" onblur="fb(this)">比如：九成新，用了3个月</span>
-【想卖的价格】<span class="fill" contenteditable="true" data-d="比如：800元" onfocus="fo(this)" onblur="fb(this)">比如：800元</span>
-【瑕疵/其他】<span class="fill" contenteditable="true" data-d="比如：屏幕有一道细划痕" onfocus="fo(this)" onblur="fb(this)">比如：屏幕有一道细划痕</span>
+    function valueOf(id) {
+      const value = document.getElementById(id).value.trim();
+      return value || "未填写";
+    }
 
-请输出：一、标题（30字以内，品牌+型号+卖点关键词）/二、描述（型号/入手/成色/出售原因/配件/瑕疵）/三、底部标签5个 /四、防骗提示</div>
-  </div>
-  <p class="use"><strong>📖 三步使用：</strong>① 绿色框填商品信息 → ② 点复制 → ③ 粘贴到 AI 对话框，拿到完整闲鱼发布内容</p>
-</div>
+    function buildPrompt() {
+      return `你是一个认真负责的闲鱼商品文案助手。请根据下面的信息，生成一份可修改的闲鱼商品发布内容。
 
-<!-- ═══════ 模板3 ═══════ -->
-<div class="t">
-  <div class="t-head"><div class="t-num c3">3</div><h3>AI 帮你写工作周报/日报</h3></div>
-  <div class="t-tags"><span class="tg tg-w">上班族</span><span class="tg tg-m">2分钟/份</span><span class="tg tg-t">任何 AI 通用</span></div>
-  <p class="what">列几句今天干了啥，AI 自动生成专业周报——STAR法则+量化数据+向上管理技巧。</p>
-  <div class="pbox">
-    <div class="pbox-h"><span>📋 Prompt 模板</span><button class="btn-copy" onclick="cp(this)">📋 一键复制</button></div>
-    <div class="pbox-ctn">你是一个职场写作专家。请帮我写一份专业工作周报。
+【商品名称】${valueOf("name")}
+【新旧程度】${valueOf("condition")}
+【想卖的价格】${valueOf("price")}
+【配件情况】${valueOf("accessories")}
+【瑕疵/其他说明】${valueOf("flaw")}
+【出售原因】${valueOf("reason")}
 
-【我的岗位】<span class="fill" contenteditable="true" data-d="输入你的岗位，比如：电商运营" onfocus="fo(this)" onblur="fb(this)">输入你的岗位，比如：电商运营</span>
-【本周完成的事】
-1. <span class="fill" contenteditable="true" data-d="事情1" onfocus="fo(this)" onblur="fb(this)">事情1</span>
-2. <span class="fill" contenteditable="true" data-d="事情2" onfocus="fo(this)" onblur="fb(this)">事情2</span>
-3. <span class="fill" contenteditable="true" data-d="事情3" onfocus="fo(this)" onblur="fb(this)">事情3</span>
-4. <span class="fill" contenteditable="true" data-d="事情4（选填）" onfocus="fo(this)" onblur="fb(this)">事情4（选填）</span>
-5. <span class="fill" contenteditable="true" data-d="事情5（选填）" onfocus="fo(this)" onblur="fb(this)">事情5（选填）</span>
+请输出：
+1. 标题：30字以内，包含品牌/型号/卖点/关键词，方便买家搜索。
+2. 商品描述：150字左右，用真实口吻写清型号、使用情况、成色、出售原因、配件、瑕疵。
+3. 底部标签：5个，贴合买家可能搜索的词。
+4. 交易提示：语气温和，不夸大，不催单，提醒买家看清楚再拍。
 
-请按格式输出：核心成果（STAR+数据）/重点工作进展/问题与反思/下周计划/需要的支持。多用"优化""提升""推进"，每项配量化数据。</div>
-  </div>
-  <p class="use"><strong>📖 三步使用：</strong>① 填岗位+事项 → ② 复制 → ③ 粘贴到 AI，拿到可直接发给领导的周报</p>
-</div>
+要求：
+- 不要写虚假承诺。
+- 不要把瑕疵藏起来。
+- 语气像真实个人卖家，不要像广告。`;
+    }
 
-<!-- ═══════ 模板4 ═══════ -->
-<div class="t">
-  <div class="t-head"><div class="t-num c4">4</div><h3>AI 抖音带货视频脚本生成器</h3></div>
-  <div class="t-tags"><span class="tg tg-w">想做抖音带货</span><span class="tg tg-m">3分钟/条</span><span class="tg tg-t">任何 AI 通用</span></div>
-  <p class="what">输入产品和卖点，AI 写出完整 60 秒口播脚本——从0秒钩子到促单结尾，照着念就行。</p>
-  <div class="pbox">
-    <div class="pbox-h"><span>📋 Prompt 模板</span><button class="btn-copy" onclick="cp(this)">📋 一键复制</button></div>
-    <div class="pbox-ctn">你是一个抖音带货金牌主播。请为产品写一个60秒口播脚本。
+    function refreshPrompt() {
+      prompt.textContent = buildPrompt();
+    }
 
-【产品】<span class="fill" contenteditable="true" data-d="比如：便携挂烫机" onfocus="fo(this)" onblur="fb(this)">比如：便携挂烫机</span>
-【价格】<span class="fill" contenteditable="true" data-d="比如：39.9元" onfocus="fo(this)" onblur="fb(this)">比如：39.9元</span>
-【核心卖点】
-1. <span class="fill" contenteditable="true" data-d="卖点1" onfocus="fo(this)" onblur="fb(this)">卖点1</span>
-2. <span class="fill" contenteditable="true" data-d="卖点2" onfocus="fo(this)" onblur="fb(this)">卖点2</span>
-3. <span class="fill" contenteditable="true" data-d="卖点3" onfocus="fo(this)" onblur="fb(this)">卖点3</span>
+    fields.forEach((id) => {
+      document.getElementById(id).addEventListener("input", refreshPrompt);
+    });
+    refreshPrompt();
 
-按秒数分段：[0-5s]钩子开头 → [5-25s]产品展示 → [25-45s]建信任 → [45-55s]促单 → [55-60s]结尾。口语化，每句话不超过15字，多用"你看""对不对""说实话"。</div>
-  </div>
-  <p class="use"><strong>📖 三步使用：</strong>① 填产品+价格+卖点 → ② 复制 → ③ 粘贴到 AI，拿到可直接照着念的带货脚本</p>
-</div>
-
-<!-- ═══════ 模板5 ═══════ -->
-<div class="t">
-  <div class="t-head"><div class="t-num c5">5</div><h3>AI 自动做 PPT 大纲和内容</h3></div>
-  <div class="t-tags"><span class="tg tg-w">学生/职场人</span><span class="tg tg-m">5分钟/份</span><span class="tg tg-t">任何 AI + Gamma/AiPPT</span></div>
-  <p class="what">输入主题，AI 输出完整PPT大纲。拿大纲去 Gamma.app 或 AiPPT.com，5分钟生成完整 PPT。</p>
-  <div class="pbox">
-    <div class="pbox-h"><span>📋 Prompt 模板</span><button class="btn-copy" onclick="cp(this)">📋 一键复制</button></div>
-    <div class="pbox-ctn">你是一个专业PPT策划师。请设计一份完整PPT大纲。
-
-【PPT主题】<span class="fill" contenteditable="true" data-d="比如：2026年短视频趋势" onfocus="fo(this)" onblur="fb(this)">比如：2026年短视频趋势</span>
-【页数】<span class="fill" contenteditable="true" data-d="比如：15页" onfocus="fo(this)" onblur="fb(this)">比如：15页</span>
-【听众】<span class="fill" contenteditable="true" data-d="比如：公司管理层" onfocus="fo(this)" onblur="fb(this)">比如：公司管理层</span>
-【演讲时长】<span class="fill" contenteditable="true" data-d="比如：20分钟" onfocus="fo(this)" onblur="fb(this)">比如：20分钟</span>
-
-逐页输出：封面/目录/背景/正文（每页：标题+观点+数据+配图建议）/总结/行动建议/Q&A。每页文字不超50字，多用对比数据。</div>
-  </div>
-  <p class="use"><strong>📖 三步使用：</strong>① 填主题+页数+听众 → ② 复制粘贴到 AI 拿大纲 → ③ 把大纲粘贴到 Gamma.app 自动生成 PPT</p>
-</div>
-
-<!-- ═══════ 模板6 ═══════ -->
-<div class="t">
-  <div class="t-head"><div class="t-num c6">6</div><h3>AI 朋友圈营销文案生成器</h3></div>
-  <div class="t-tags"><span class="tg tg-w">微商/个体户/店主</span><span class="tg tg-m">2分钟/周</span><span class="tg tg-t">任何 AI 通用</span></div>
-  <p class="what">输入产品和价格，AI 生成 7 条不同风格的朋友圈文案（周一专业科普→周日情感故事），发一周不重样。</p>
-  <div class="pbox">
-    <div class="pbox-h"><span>📋 Prompt 模板</span><button class="btn-copy" onclick="cp(this)">📋 一键复制</button></div>
-    <div class="pbox-ctn">你是一个朋友圈营销专家。请为我的产品生成7条朋友圈文案。
-
-【我的产品】<span class="fill" contenteditable="true" data-d="比如：手工牛肉酱" onfocus="fo(this)" onblur="fb(this)">比如：手工牛肉酱</span>
-【我的人设】<span class="fill" contenteditable="true" data-d="比如：90后宝妈，爱做饭" onfocus="fo(this)" onblur="fb(this)">比如：90后宝妈，爱做饭</span>
-【价格】<span class="fill" contenteditable="true" data-d="比如：28元一瓶，买三送一" onfocus="fo(this)" onblur="fb(this)">比如：28元一瓶，买三送一</span>
-
-周一专业科普/周二客户反馈/周三日常分享/周四痛点共鸣/周五互动话题/周六限时活动/周日情感故事。每条150字左右，配emoji+建议配图。</div>
-  </div>
-  <p class="use"><strong>📖 三步使用：</strong>① 填产品+人设+价格 → ② 复制粘贴到 AI → ③ 拿到7条朋友圈，每天发一条</p>
-</div>
-
-<!-- ═══════ 模板7 ═══════ -->
-<div class="t">
-  <div class="t-head"><div class="t-num c7">7</div><h3>AI 简历优化器</h3></div>
-  <div class="t-tags"><span class="tg tg-w">求职者</span><span class="tg tg-m">5分钟/份</span><span class="tg tg-t">任何 AI 通用</span></div>
-  <p class="what">把现在的简历粘贴进去，AI 改成 HR 爱看的版本——STAR法则重写+量化数据+删除空话套话。</p>
-  <div class="pbox">
-    <div class="pbox-h"><span>📋 Prompt 模板</span><button class="btn-copy" onclick="cp(this)">📋 一键复制</button></div>
-    <div class="pbox-ctn">你是一个资深HR和简历优化专家。请帮我优化简历。
-
-【目标岗位】<span class="fill" contenteditable="true" data-d="比如：新媒体运营" onfocus="fo(this)" onblur="fb(this)">比如：新媒体运营</span>
-【我的原始简历】
-<span class="fill" contenteditable="true" data-d="（把你现在的简历全文粘贴在这里）" onfocus="fo(this)" onblur="fb(this)">（把你现在的简历全文粘贴在这里）</span>
-
-优化：①自我评价删空话，提炼3句核心竞争力 ②每段经历按STAR重写（情境→任务→行动→结果，必须带数据） ③项目经历突出角色贡献 ④技能清单只留岗位相关的 ⑤整体诊断（最大问题/缺什么/排版建议）</div>
-  </div>
-  <p class="use"><strong>📖 三步使用：</strong>① 填岗位+粘贴简历 → ② 复制粘贴到 AI → ③ 拿到优化后的简历+诊断建议</p>
-</div>
-
-<!-- ═══════ 模板8 ═══════ -->
-<div class="t">
-  <div class="t-head"><div class="t-num c8">8</div><h3>AI 公众号/头条文章写作</h3></div>
-  <div class="t-tags"><span class="tg tg-w">自媒体创作者</span><span class="tg tg-m">10分钟/篇</span><span class="tg tg-t">DeepSeek/Kimi/豆包</span></div>
-  <p class="what">给一个选题，AI 从标题、大纲到全文一件输出。含标题优化和读者留存技巧。</p>
-  <div class="pbox">
-    <div class="pbox-h"><span>📋 Prompt 模板</span><button class="btn-copy" onclick="cp(this)">📋 一键复制</button></div>
-    <div class="pbox-ctn">你是一个资深自媒体编辑。请根据选题写一篇公众号/头条文章。
-
-【选题】<span class="fill" contenteditable="true" data-d="比如：为什么很多人买了AI工具却从来不用" onfocus="fo(this)" onblur="fb(this)">比如：为什么很多人买了AI工具却从来不用</span>
-【目标读者】<span class="fill" contenteditable="true" data-d="比如：想用AI但三天热度的普通人" onfocus="fo(this)" onblur="fb(this)">比如：想用AI但三天热度的普通人</span>
-【文章长度】<span class="fill" contenteditable="true" data-d="比如：2000字" onfocus="fo(this)" onblur="fb(this)">比如：2000字</span>
-【风格】<span class="fill" contenteditable="true" data-d="比如：接地气，有点幽默，像朋友聊天" onfocus="fo(this)" onblur="fb(this)">比如：接地气，有点幽默，像朋友聊天</span>
-
-输出：5个备选标题（数字型+痛点型+悬念型）/文章大纲/全文（开头场景切入前3句必须留住读者，正文3-4章每章300-400字，结尾互动引导）。每段不超4行（手机阅读），多用具象例子。</div>
-  </div>
-  <p class="use"><strong>📖 三步使用：</strong>① 填选题+读者+字数+风格 → ② 复制粘贴到 AI → ③ 拿到完整文章，稍作修改直接发布</p>
-</div>
-
-<!-- ═══════ 模板9 ═══════ -->
-<div class="t">
-  <div class="t-head"><div class="t-num c9">9</div><h3>AI 帮你选品——电商蓝海品类挖掘</h3></div>
-  <div class="t-tags"><span class="tg tg-w">电商/闲鱼卖家</span><span class="tg tg-m">5分钟/次</span><span class="tg tg-t">DeepSeek/Kimi/豆包</span></div>
-  <p class="what">告诉AI你想做什么类目，分析竞争度、找蓝海品类、给出拿货渠道和月利润预估。</p>
-  <div class="pbox">
-    <div class="pbox-h"><span>📋 Prompt 模板</span><button class="btn-copy" onclick="cp(this)">📋 一键复制</button></div>
-    <div class="pbox-ctn">你是一个电商选品专家。请帮我分析下面的类目，找到蓝海机会。
-
-【我想做的类目】<span class="fill" contenteditable="true" data-d="比如：家居/母婴/数码配件/宠物" onfocus="fo(this)" onblur="fb(this)">比如：家居/母婴/数码配件/宠物</span>
-【我的资源/优势】<span class="fill" contenteditable="true" data-d="比如：在义乌有货源、会做小红书" onfocus="fo(this)" onblur="fb(this)">比如：在义乌有货源、会做小红书</span>
-【预算】<span class="fill" contenteditable="true" data-d="比如：启动资金2000元" onfocus="fo(this)" onblur="fb(this)">比如：启动资金2000元</span>
-【在哪个平台卖】<span class="fill" contenteditable="true" data-d="比如：闲鱼/拼多多/抖音小店" onfocus="fo(this)" onblur="fb(this)">比如：闲鱼/拼多多/抖音小店</span>
-
-请分析：TOP5热门品类竞争+利润/3个蓝海细分机会（标注售价+拿货渠道+预估月利润）/选品避坑清单/30天行动计划。</div>
-  </div>
-  <p class="use"><strong>📖 三步使用：</strong>① 填类目+资源+预算+平台 → ② 复制粘贴到 AI → ③ 拿到完整选品分析报告</p>
-</div>
-
-<!-- ═══════ 模板10 ═══════ -->
-<div class="t">
-  <div class="t-head"><div class="t-num c10">10</div><h3>AI 20分钟读透一本书</h3></div>
-  <div class="t-tags"><span class="tg tg-w">学生/终身学习者</span><span class="tg tg-m">20分钟/本</span><span class="tg tg-t">任何 AI 通用</span></div>
-  <p class="what">给AI一本书名，提取核心观点、总结框架、生成马上能用的行动清单。不用花几小时啃完一本。</p>
-  <div class="pbox">
-    <div class="pbox-h"><span>📋 Prompt 模板</span><button class="btn-copy" onclick="cp(this)">📋 一键复制</button></div>
-    <div class="pbox-ctn">你是一个高效学习教练。请帮我快速掌握这本书的核心内容。
-
-【书名】<span class="fill" contenteditable="true" data-d="比如：《非暴力沟通》" onfocus="fo(this)" onblur="fb(this)">比如：《非暴力沟通》</span>
-【作者】<span class="fill" contenteditable="true" data-d="如果知道就填上" onfocus="fo(this)" onblur="fb(this)">如果知道就填上</span>
-【为什么读】<span class="fill" contenteditable="true" data-d="比如：想提升跟同事的沟通能力" onfocus="fo(this)" onblur="fb(this)">比如：想提升跟同事的沟通能力</span>
-
-输出：50字概括/核心框架（3-5个概念一句人话解释）/5个最重要观点（配生活例子）/3个马上能用的方法（步骤+场景）/局限性分析/行动清单（3件事）。不要学术腔，用日常语言。</div>
-  </div>
-  <p class="use"><strong>📖 三步使用：</strong>① 填书名+作者+为什么读 → ② 复制粘贴到 AI → ③ 拿到这本书的精华摘要+行动清单</p>
-</div>
-
-<!-- ═══════ 模板11 ═══════ -->
-<div class="t">
-  <div class="t-head"><div class="t-num c11">11</div><h3>AI 短视频口播文案生成器</h3></div>
-  <div class="t-tags"><span class="tg tg-w">想做口播号的人</span><span class="tg tg-m">3分钟/条</span><span class="tg tg-t">任何 AI 通用</span></div>
-  <p class="what">输入一个话题，AI 生成 60 秒口播文案——从钩子到金句到结尾关注引导，照着提词器念就行。<strong style="color:var(--g)">做个人 IP 必备。</strong></p>
-  <div class="pbox">
-    <div class="pbox-h"><span>📋 Prompt 模板</span><button class="btn-copy" onclick="cp(this)">📋 一键复制</button></div>
-    <div class="pbox-ctn">你是一个短视频口播文案专家。请围绕下面的话题写一条 60 秒口播文案。
-
-【话题】<span class="fill" contenteditable="true" data-d="比如：为什么大多数人一辈子都赚不到钱" onfocus="fo(this)" onblur="fb(this)">比如：为什么大多数人一辈子都赚不到钱</span>
-【我的观点/立场】<span class="fill" contenteditable="true" data-d="比如：不是能力问题，是操作系统的问题" onfocus="fo(this)" onblur="fb(this)">比如：不是能力问题，是操作系统的问题</span>
-【我希望观众看完后】<span class="fill" contenteditable="true" data-d="比如：重新审视自己的赚钱逻辑，产生"原来如此"的感觉" onfocus="fo(this)" onblur="fb(this)">比如：重新审视自己的赚钱逻辑，产生"原来如此"的感觉</span>
-【我的风格】<span class="fill" contenteditable="true" data-d="比如：直接、不端不装、像朋友酒后聊真话" onfocus="fo(this)" onblur="fb(this)">比如：直接、不端不装、像朋友酒后聊真话</span>
-
-按秒数分段：[0-5s]用一个反常识观点或扎心问题抓人 → [5-25s]展开观点，讲一个具体例子或故事 → [25-45s]把例子上升到认知层面，给出"原来如此"的洞察 → [45-55s]给一个观众明天就能用的行动建议 → [55-60s]金句收尾+关注引导。每句话不超过 18 字（念出来不喘气）。</div>
-  </div>
-  <p class="use"><strong>📖 三步使用：</strong>① 填话题+观点+风格 → ② 复制粘贴到 AI → ③ 拿到完整口播稿，照着提词器念</p>
-</div>
-
-<!-- ═══════ 模板12 ═══════ -->
-<div class="t">
-  <div class="t-head"><div class="t-num c12">12</div><h3>AI 知乎高赞回答生成器</h3></div>
-  <div class="t-tags"><span class="tg tg-w">想做知乎涨粉的人</span><span class="tg tg-m">10分钟/篇</span><span class="tg tg-t">DeepSeek/Claude/Kimi</span></div>
-  <p class="what">找一个热门问题，把你的经历告诉 AI，生成专业又有温度的高赞回答——快速涨粉引流。</p>
-  <div class="pbox">
-    <div class="pbox-h"><span>📋 Prompt 模板</span><button class="btn-copy" onclick="cp(this)">📋 一键复制</button></div>
-    <div class="pbox-ctn">你是一个知乎万赞答主。请针对下面的问题写一篇高赞回答。
-
-【知乎问题】<span class="fill" contenteditable="true" data-d="比如：25岁做什么，可以在5年后受益匪浅？" onfocus="fo(this)" onblur="fb(this)">比如：25岁做什么，可以在5年后受益匪浅？</span>
-【我的相关经历】<span class="fill" contenteditable="true" data-d="比如：25岁从会计转行做自媒体，第一年收入只有之前的一半，第三年超过了之前10倍" onfocus="fo(this)" onblur="fb(this)">比如：25岁从会计转行做自媒体，第一年收入只有之前的一半，第三年超过了之前10倍</span>
-【我想传达的核心观点】<span class="fill" contenteditable="true" data-d="比如：25岁最重要的事不是存钱，是投资自己的"可迁移能力"" onfocus="fo(this)" onblur="fb(this)">比如：25岁最重要的事不是存钱，是投资自己的"可迁移能力"</span>
-【我希望读者感受到】<span class="fill" contenteditable="true" data-d="比如：被点醒、有方向感、想马上列一个技能提升计划" onfocus="fo(this)" onblur="fb(this)">比如：被点醒、有方向感、想马上列一个技能提升计划</span>
-
-结构：①开头用1-2句话直接回答（不要铺垫、不要"谢邀"）②中间2-3个分论点，每个配真实经历/具体案例（自己的或朋友的，拒绝"我有一个朋友"式编造感）③结尾升华观点+给出可执行的建议列表。风格：专业但不说教，真诚但不煽情。文中至少有3处让读者想说"确实"。</div>
-  </div>
-  <p class="use"><strong>📖 三步使用：</strong>① 找知乎热榜问题 → ② 填问题+经历+观点 → ③ 复制粘贴到 AI → 拿到可直接发布的高赞回答</p>
-</div>
-
-<!-- ═══════ 模板13 ═══════ -->
-<div class="t">
-  <div class="t-head"><div class="t-num c13">13</div><h3>AI B站/视频号选题策划</h3></div>
-  <div class="t-tags"><span class="tg tg-w">视频创作者</span><span class="tg tg-m">5分钟/次</span><span class="tg tg-t">任何 AI 通用</span></div>
-  <p class="what">告诉 AI 你的领域和风格，生成 10 个爆款选题+标题+内容框架。解决"不知道拍什么"的头号难题。</p>
-  <div class="pbox">
-    <div class="pbox-h"><span>📋 Prompt 模板</span><button class="btn-copy" onclick="cp(this)">📋 一键复制</button></div>
-    <div class="pbox-ctn">你是一个B站/视频号资深内容策划。请帮我想 10 个爆款选题。
-
-【我的领域】<span class="fill" contenteditable="true" data-d="比如：AI工具教程/个人成长/数码测评" onfocus="fo(this)" onblur="fb(this)">比如：AI工具教程/个人成长/数码测评</span>
-【我的风格/人设】<span class="fill" contenteditable="true" data-d="比如：接地气、试过才说、帮粉丝省钱" onfocus="fo(this)" onblur="fb(this)">比如：接地气、试过才说、帮粉丝省钱</span>
-【目标观众】<span class="fill" contenteditable="true" data-d="比如：想用AI但不知道从哪开始的大学生和上班族" onfocus="fo(this)" onblur="fb(this)">比如：想用AI但不知道从哪开始的大学生和上班族</span>
-【对标账号/参考风格】<span class="fill" contenteditable="true" data-d="比如：影视飓风、毕导、半佛仙人（选填）" onfocus="fo(this)" onblur="fb(this)">比如：影视飓风、毕导、半佛仙人（选填）</span>
-
-每个选题包含：①标题（含封面文字建议，控制在8字以内）②为什么这个选题能爆（情绪点/知识差/争议点 至少命中一个）③内容框架（3段式：引入→展开→总结）④预估制作难度（⭐⭐1-5星）。10个选题覆盖：2个热点借势+3个痛点解决+3个反常识科普+2个个人故事类。</div>
-  </div>
-  <p class="use"><strong>📖 三步使用：</strong>① 填领域+风格+观众 → ② 复制粘贴到 AI → ③ 拿到 10 个选题，从中挑最有感觉的拍</p>
-</div>
-
-<!-- ═══════ 模板14 ═══════ -->
-<div class="t">
-  <div class="t-head"><div class="t-num c14">14</div><h3>AI 小红书/抖音评论区运营</h3></div>
-  <div class="t-tags"><span class="tg tg-w">自媒体博主</span><span class="tg tg-m">2分钟/条</span><span class="tg tg-t">任何 AI 通用</span></div>
-  <p class="what">输入你的笔记内容和评论区风格，AI 生成引流钩子评论+作者回复话术。评论区才是最被低估的涨粉入口。</p>
-  <div class="pbox">
-    <div class="pbox-h"><span>📋 Prompt 模板</span><button class="btn-copy" onclick="cp(this)">📋 一键复制</button></div>
-    <div class="pbox-ctn">你是一个社交媒体运营专家。请帮我运营评论区，提高互动和关注转化。
-
-【我这篇笔记/视频的主题】<span class="fill" contenteditable="true" data-d="比如：3个AI工具让打工人每天早下班2小时" onfocus="fo(this)" onblur="fb(this)">比如：3个AI工具让打工人每天早下班2小时</span>
-【我想引导的方向】<span class="fill" contenteditable="true" data-d="比如：让更多人关注我、收藏这篇笔记、进粉丝群" onfocus="fo(this)" onblur="fb(this)">比如：让更多人关注我、收藏这篇笔记、进粉丝群</span>
-【我的账号人设】<span class="fill" contenteditable="true" data-d="比如：敢说真话的AI工具测评博主，帮你省钱不踩坑" onfocus="fo(this)" onblur="fb(this)">比如：敢说真话的AI工具测评博主，帮你省钱不踩坑</span>
-【我不希望评论区出现的感觉】<span class="fill" contenteditable="true" data-d="比如：水军感、机器人感、明显的营销话术" onfocus="fo(this)" onblur="fb(this)">比如：水军感、机器人感、明显的营销话术</span>
-
-请生成：①5条"钩子评论"（我可以在评论区自己发、引导粉丝互动的问题或金句，比如"你觉得这三个里哪个最有用？我投第二个"）②5条作者回复模板（针对"这个在哪里下载？""收费吗？""XX和YY比哪个好？"这类常见评论的高转化回复）③3条争议/提问型评论（适度引发讨论的评论，增加评论区活跃度，但不要引战）。每条必须像真人发的，杜绝AI味。</div>
-  </div>
-  <p class="use"><strong>📖 三步使用：</strong>① 填主题+人设+引导方向 → ② 复制粘贴到 AI → ③ 把生成的评论和回复复制到你的笔记评论区</p>
-</div>
-
-<!-- ═══════ 模板15 ═══════ -->
-<div class="t">
-  <div class="t-head"><div class="t-num c15">15</div><h3>AI 直播带货话术全流程</h3></div>
-  <div class="t-tags"><span class="tg tg-w">想做直播带货的人</span><span class="tg tg-m">10分钟/场</span><span class="tg tg-t">任何 AI 通用</span></div>
-  <p class="what">输入产品和价格，AI 生成开场→讲品→逼单→转款→结尾全流程话术。照着念，新手也能上播。</p>
-  <div class="pbox">
-    <div class="pbox-h"><span>📋 Prompt 模板</span><button class="btn-copy" onclick="cp(this)">📋 一键复制</button></div>
-    <div class="pbox-ctn">你是一个直播带货话术教练，带过 100+ 新人主播首播成交破万。请为下面的产品写一套完整的直播话术流程。
-
-【产品】<span class="fill" contenteditable="true" data-d="比如：家用便携投影仪" onfocus="fo(this)" onblur="fb(this)">比如：家用便携投影仪</span>
-【价格/优惠】<span class="fill" contenteditable="true" data-d="比如：日常价899，直播间到手价 599，前50名送支架+幕布" onfocus="fo(this)" onblur="fb(this)">比如：日常价899，直播间到手价 599，前50名送支架+幕布</span>
-【核心卖点】<span class="fill" contenteditable="true" data-d="1.巴掌大小带去哪都行 2.自动对焦不用调 3.漫反射不伤眼 4.安卓系统直接装APP" onfocus="fo(this)" onblur="fb(this)">1.巴掌大小带去哪都行 2.自动对焦不用调 3.漫反射不伤眼 4.安卓系统直接装APP</span>
-【目标人群】<span class="fill" contenteditable="true" data-d="比如：租房党/有娃家庭/爱露营的年轻人" onfocus="fo(this)" onblur="fb(this)">比如：租房党/有娃家庭/爱露营的年轻人</span>
-【直播时长】<span class="fill" contenteditable="true" data-d="比如：单品讲解约5分钟" onfocus="fo(this)" onblur="fb(this)">比如：单品讲解约5分钟</span>
-
-输出完整话术：①开场留人（30s，必须一句话钩子+福利预告，比如"接下来这个品，是我跟品牌方吵了三次才拿到的价格"）②讲品（3分钟，按"痛点/场景→产品出场→卖点演示→对比优势"展开，每讲一个卖点都要回到"这对你意味着什么"）③逼单（1分钟，价格锚定+福利拆解+倒计时紧迫感"这个价格只有前50单，拍完我没办法"）④转款衔接（30s，"这个品还没拍到的扣1，我先挂链接，同时下一个品更炸"）⑤结尾（"买了的在公屏打已拍，让我看到你"。全程口语化，多用"你看""我跟你说""来"。</div>
-  </div>
-  <p class="use"><strong>📖 三步使用：</strong>① 填产品+价格+卖点+人群 → ② 复制粘贴到 AI → ③ 拿到完整 5 分钟话术，照着稿子播</p>
-</div>
-
-<!-- ═══════ FAQ ═══════ -->
-<div class="faq">
-  <h2>你可能还想知道</h2>
-  <div class="faq-item">
-    <div class="q">这些模板需要什么 AI 工具？要付费吗？</div>
-    <div class="a">所有模板都是<strong>通用 Prompt 格式</strong>，放进任何一个 AI 对话工具都能用。推荐：<strong>豆包（完全免费）、DeepSeek（注册送额度）、Kimi（免费）、通义千问（免费）</strong>。不需要买任何付费 AI 订阅。</div>
-  </div>
-  <div class="faq-item">
-    <div class="q">我是纯小白，完全没用过 AI，能用吗？</div>
-    <div class="a">能。每个模板的用法都是 <strong>"打开 AI 工具 → 粘贴 Prompt → 改几个字 → 回车"</strong> 四步走。你不需要知道怎么写提示词，这些都帮你写好了。</div>
-  </div>
-  <div class="faq-item">
-    <div class="q">这些模板跟网上免费的有什么区别？</div>
-    <div class="a">网上大多是孤零零的<strong>"帮我写XX"</strong>。这个合集的每个模板都<strong>经过了实测验证</strong>，包含角色设定、输出格式、风格约束和示例引导。同样的需求，用这个模板出的结果质量远高于自己随便问一句。</div>
-  </div>
-  <div class="faq-item">
-    <div class="q">模板会过期吗？后续更新怎么办？</div>
-    <div class="a">AI 底层逻辑不变，模板<strong>长期有效</strong>。AI 工具更新后我也会同步优化模板，<strong>购买后新版本免费补发</strong>。</div>
-  </div>
-</div>
-
-<footer>
-  <p><strong>AI 实战模板合集 v2.0</strong></p>
-  <p>15 个模板 · 已实测可用 · 持续更新 · 永久有效</p>
-</footer>
-
-</div>
-
-<script>
-function fo(e){if(e.textContent===e.getAttribute('data-d'))e.textContent=''}
-function fb(e){if(!e.textContent.trim())e.textContent=e.getAttribute('data-d')}
-function cp(b){
-  var box=b.closest('.pbox').querySelector('.pbox-ctn');
-  var c=box.cloneNode(true);
-  c.querySelectorAll('.fill').forEach(function(e){e.replaceWith(e.textContent.trim()||e.getAttribute('data-d'))});
-  navigator.clipboard.writeText(c.textContent).then(function(){
-    b.textContent='✅ 已复制';b.style.borderColor='#34d399';b.style.color='#34d399';
-    setTimeout(function(){b.textContent='📋 一键复制';b.style.borderColor='';b.style.color=''},2000)
-  })
-}
-</script>
+    document.getElementById("copy").addEventListener("click", async () => {
+      const text = buildPrompt();
+      try {
+        await navigator.clipboard.writeText(text);
+        const btn = document.getElementById("copy");
+        btn.textContent = "已复制";
+        setTimeout(() => { btn.textContent = "复制已填好的提示词"; }, 1200);
+      } catch (error) {
+        alert("复制失败，请手动选中文字复制");
+      }
+    });
+  </script>
 </body>
 </html>
