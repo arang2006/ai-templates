@@ -125,6 +125,27 @@
       gap: 12px;
       margin-bottom: 14px;
     }
+    .preset-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin: 12px 0 16px;
+    }
+    .preset {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      padding: 10px 8px;
+      margin: 0;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .preset:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
     label {
       display: grid;
       gap: 6px;
@@ -167,6 +188,11 @@
       color: #214838;
       font-size: 14px;
     }
+    .warn {
+      border-left-color: #d97706;
+      background: #fff7ed;
+      color: #7c3f10;
+    }
     footer {
       text-align: center;
       color: var(--muted);
@@ -176,6 +202,7 @@
     @media (max-width: 680px) {
       section { padding: 20px; }
       .example { grid-template-columns: 1fr; }
+      .preset-row { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -248,6 +275,14 @@ PPT美化排版 课程汇报/工作汇报 19.9元起
 
     <section>
       <h2>直接填写，再一键复制</h2>
+      <p class="note">先选一个示例快速套用，再改成自己的真实信息。这个页面负责整理“给 AI 的指令”，不是直接替你生成最终文案。</p>
+      <div class="preset-row" aria-label="快速填入示例">
+        <button class="preset" data-preset="used">二手闲置</button>
+        <button class="preset" data-preset="resource">虚拟资料</button>
+        <button class="preset" data-preset="skill">技能接单</button>
+        <button class="preset" data-preset="local">本地服务</button>
+        <button class="preset" data-preset="goods">小商品</button>
+      </div>
       <div class="form">
         <label>发布类型
           <select id="type">
@@ -285,7 +320,7 @@ PPT美化排版 课程汇报/工作汇报 19.9元起
           </select>
         </label>
       </div>
-      <button id="copy">复制已填好的提示词</button>
+      <button id="copy">复制到 AI 的指令</button>
       <pre id="prompt"></pre>
     </section>
 
@@ -293,11 +328,31 @@ PPT美化排版 课程汇报/工作汇报 19.9元起
       <h2>怎么用</h2>
       <div class="list">
         <div class="item"><b class="num">1</b><div><strong>填写发布信息</strong><span>先选发布类型，再填名称、价格、包含内容和注意事项。</span></div></div>
-        <div class="item"><b class="num">2</b><div><strong>复制提示词</strong><span>点击“复制已填好的提示词”，复制的是完整内容。</span></div></div>
+        <div class="item"><b class="num">2</b><div><strong>复制指令</strong><span>点击“复制到 AI 的指令”，复制的是填好后的完整内容。</span></div></div>
         <div class="item"><b class="num">3</b><div><strong>粘贴到 AI</strong><span>豆包、DeepSeek、Kimi、通义千问任选一个。</span></div></div>
         <div class="item"><b class="num">4</b><div><strong>检查后发布</strong><span>删掉不真实的句子，再配真实图片上架。</span></div></div>
       </div>
       <p class="note">说明：这不是软件，也不是课程；不承诺成交、不承诺爆单。它只帮你把商品信息整理成更清楚的发布文案。</p>
+    </section>
+
+    <section>
+      <h2>发布前自查</h2>
+      <div class="list">
+        <div class="item"><b class="num">1</b><div><strong>真实</strong><span>成色、瑕疵、服务范围、交付方式不要夸大。</span></div></div>
+        <div class="item"><b class="num">2</b><div><strong>清楚</strong><span>买家看完要知道卖什么、多少钱、怎么交付。</span></div></div>
+        <div class="item"><b class="num">3</b><div><strong>合规</strong><span>不要写绕开平台交易、保证收益、代写作业等内容。</span></div></div>
+        <div class="item"><b class="num">4</b><div><strong>像真人</strong><span>少用夸张词，多写具体情况和真实限制。</span></div></div>
+      </div>
+      <p class="note warn">低价资料、服务接单、本地服务尤其要写清“不承诺结果”和“先沟通再拍”，减少退款和扯皮。</p>
+    </section>
+
+    <section>
+      <h2>常见问题</h2>
+      <div class="list">
+        <div class="item"><b class="num">问</b><div><strong>这个页面会直接生成最终文案吗？</strong><span>不会。它会帮你生成一段更完整的 AI 指令，你复制到豆包、DeepSeek、Kimi 后再生成文案。</span></div></div>
+        <div class="item"><b class="num">问</b><div><strong>手机能用吗？</strong><span>能。手机浏览器打开链接，填写信息后复制，再切到 AI App 或网页粘贴。</span></div></div>
+        <div class="item"><b class="num">问</b><div><strong>服务和资料也能写吗？</strong><span>能。先选发布类型，再把“成色/配件”理解成“交付方式/包含内容”。</span></div></div>
+      </div>
     </section>
 
     <footer>闲鱼发布文案 AI 助手 · 极简版</footer>
@@ -305,6 +360,58 @@ PPT美化排版 课程汇报/工作汇报 19.9元起
   <script>
     const fields = ["type", "name", "condition", "price", "accessories", "flaw", "reason", "tone"];
     const prompt = document.getElementById("prompt");
+    const presets = {
+      used: {
+        type: "二手闲置/现货实物",
+        name: "红米K60手机",
+        condition: "九成新，使用了3个月",
+        price: "800元",
+        accessories: "原装充电器、手机壳",
+        flaw: "屏幕有一道轻微细划痕，不影响使用",
+        reason: "闲置不用",
+        tone: "真实个人卖家，朴素可信"
+      },
+      resource: {
+        type: "虚拟资料/教程资源",
+        name: "闲鱼商品描述AI模板",
+        condition: "网页链接使用，付款后发工具链接",
+        price: "1.9元体验价",
+        accessories: "填写式页面、复制提示词、使用说明",
+        flaw: "不是软件，不直接生成最终文案；需要复制到豆包/DeepSeek/Kimi 使用，不承诺成交",
+        reason: "适合不会写闲鱼标题和描述的新手卖家",
+        tone: "低价体验，简单直接"
+      },
+      skill: {
+        type: "技能服务/接单",
+        name: "PPT美化排版",
+        condition: "线上交付，先看页数和需求再报价",
+        price: "19.9元起",
+        accessories: "10页以内基础美化，统一字体、配色、版式",
+        flaw: "不代写内容，不做虚假材料；急单请提前说明",
+        reason: "适合学生汇报、工作汇报、课程展示",
+        tone: "服务接单，清楚专业"
+      },
+      local: {
+        type: "本地上门/到店服务",
+        name: "油烟机清洗",
+        condition: "本地上门服务，具体时间先预约",
+        price: "88元起",
+        accessories: "油烟机外壳、滤网、风轮基础清洗",
+        flaw: "重油污、特殊机型可能加价；下单前先发照片确认",
+        reason: "适合家庭厨房和小餐饮店",
+        tone: "本地服务，稳妥接地气"
+      },
+      goods: {
+        type: "小商品现货",
+        name: "桌面收纳盒",
+        condition: "全新现货",
+        price: "9.9元",
+        accessories: "一个收纳盒，多色可选，具体颜色先沟通",
+        flaw: "手工测量有轻微误差，介意请先问清楚",
+        reason: "适合宿舍、书桌、化妆台收纳",
+        tone: "真实个人卖家，朴素可信"
+      }
+    };
 
     function valueOf(id) {
       const value = document.getElementById(id).value.trim();
@@ -325,7 +432,7 @@ PPT美化排版 课程汇报/工作汇报 19.9元起
 
 请输出：
 1. 标题：30字以内，包含核心关键词，方便买家搜索。
-2. 描述：根据发布类型来写。
+2. 描述：根据发布类型来写，输出“简短版”和“完整发布版”两种，方便我按场景选择。
    - 如果是二手闲置/现货实物：写清成色、使用情况、配件、瑕疵和出售原因。
    - 如果是虚拟资料/教程资源：写清资料包含什么、适合谁、交付方式和注意事项，不承诺收益。
    - 如果是技能服务/接单：写清服务内容、交付流程、交付周期、修改范围和注意事项。
@@ -348,6 +455,15 @@ PPT美化排版 课程汇报/工作汇报 19.9元起
     fields.forEach((id) => {
       document.getElementById(id).addEventListener("input", refreshPrompt);
     });
+    document.querySelectorAll(".preset").forEach((button) => {
+      button.addEventListener("click", () => {
+        const data = presets[button.dataset.preset];
+        fields.forEach((id) => {
+          document.getElementById(id).value = data[id];
+        });
+        refreshPrompt();
+      });
+    });
     refreshPrompt();
 
     document.getElementById("copy").addEventListener("click", async () => {
@@ -356,7 +472,7 @@ PPT美化排版 课程汇报/工作汇报 19.9元起
         await navigator.clipboard.writeText(text);
         const btn = document.getElementById("copy");
         btn.textContent = "已复制";
-        setTimeout(() => { btn.textContent = "复制已填好的提示词"; }, 1200);
+        setTimeout(() => { btn.textContent = "复制到 AI 的指令"; }, 1200);
       } catch (error) {
         alert("复制失败，请手动选中文字复制");
       }
