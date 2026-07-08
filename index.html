@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>闲鱼卖货文案 AI 模板包</title>
+  <title>闲鱼发布文案 AI 助手</title>
   <style>
     :root {
       --bg: #f5f7fb;
@@ -131,7 +131,7 @@
       font-weight: 700;
       font-size: 14px;
     }
-    input, textarea {
+    input, textarea, select {
       width: 100%;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -145,7 +145,7 @@
       min-height: 76px;
       resize: vertical;
     }
-    input:focus, textarea:focus {
+    input:focus, textarea:focus, select:focus {
       border-color: var(--blue);
       box-shadow: 0 0 0 3px rgba(37, 99, 235, .12);
     }
@@ -183,15 +183,15 @@
   <main>
     <section class="hero">
       <span class="tag">新手填空式模板</span>
-      <h1>闲鱼商品描述不会写？</h1>
-      <p class="sub">把商品名、价格、成色、瑕疵填进去，用 AI 生成标题、描述、标签和交易提示。适合闲鱼新手上架二手物品、资料包、小商品。</p>
+      <h1>闲鱼文案不会写？</h1>
+      <p class="sub">不只二手闲置，也支持资料包、技能接单、本地服务、小商品现货。填发布类型、价格、交付内容和注意事项，用 AI 生成标题、描述、标签和交易提示。</p>
     </section>
 
     <section>
       <h2>你拿到的就是这 3 样</h2>
       <div class="list">
-        <div class="item"><b class="num">1</b><div><strong>闲鱼商品描述模板</strong><span>复制到豆包、DeepSeek、Kimi、通义千问都能用。</span></div></div>
-        <div class="item"><b class="num">2</b><div><strong>完整示例</strong><span>用红米 K60 演示输入后会生成什么结果。</span></div></div>
+        <div class="item"><b class="num">1</b><div><strong>多类型发布模板</strong><span>二手闲置、虚拟资料、技能服务、本地服务、小商品都能套。</span></div></div>
+        <div class="item"><b class="num">2</b><div><strong>完整示例</strong><span>用手机闲置和服务接单演示输入后会生成什么结果。</span></div></div>
         <div class="item"><b class="num">3</b><div><strong>使用说明</strong><span>告诉你怎么填、怎么改、哪些话不要乱写。</span></div></div>
       </div>
     </section>
@@ -222,25 +222,67 @@
     </section>
 
     <section>
+      <h2>服务类也能用</h2>
+      <div class="example">
+        <div class="box input">输入：
+类型：技能服务/接单
+名称：PPT美化排版
+价格：19.9元起
+包含：10页以内基础美化，统一字体、配色和版式
+注意事项：不代写内容，不做虚假材料
+适合人群：学生汇报、工作汇报、课程展示</div>
+        <div class="box output">输出：
+标题：
+PPT美化排版 课程汇报/工作汇报 19.9元起
+
+描述：
+可以帮你把已有 PPT 做基础美化，主要调整字体、配色、排版和页面整洁度。适合课程汇报、工作汇报、社团展示这类场景。10页以内 19.9 元起，具体看页数和修改难度。
+
+说明：
+不代写内容，不做虚假材料；下单前请先说明页数、用途和截止时间。
+
+标签：
+#PPT美化 #PPT排版 #课程汇报 #工作汇报 #设计接单</div>
+      </div>
+    </section>
+
+    <section>
       <h2>直接填写，再一键复制</h2>
       <div class="form">
-        <label>商品名称
-          <input id="name" value="红米K60手机" placeholder="比如：红米K60手机">
+        <label>发布类型
+          <select id="type">
+            <option value="二手闲置/现货实物">二手闲置/现货实物</option>
+            <option value="虚拟资料/教程资源">虚拟资料/教程资源</option>
+            <option value="技能服务/接单">技能服务/接单</option>
+            <option value="本地上门/到店服务">本地上门/到店服务</option>
+            <option value="小商品现货">小商品现货</option>
+          </select>
         </label>
-        <label>新旧程度
-          <input id="condition" value="九成新，使用了3个月" placeholder="比如：九成新，使用了3个月">
+        <label>商品/服务名称
+          <input id="name" value="红米K60手机" placeholder="比如：红米K60手机 / PPT美化 / 家电清洗">
+        </label>
+        <label>成色/交付方式
+          <input id="condition" value="九成新，使用了3个月" placeholder="比如：九成新 / 网盘发货 / 线上交付 / 上门服务">
         </label>
         <label>想卖的价格
-          <input id="price" value="800元" placeholder="比如：800元">
+          <input id="price" value="800元" placeholder="比如：800元 / 9.9元 / 19.9元起 / 面议">
         </label>
-        <label>配件情况
-          <input id="accessories" value="原装充电器、手机壳" placeholder="比如：原装充电器、手机壳、包装盒">
+        <label>配件/包含内容
+          <input id="accessories" value="原装充电器、手机壳" placeholder="比如：原装充电器 / 10页PPT美化 / 资料包10份">
         </label>
-        <label>瑕疵/其他说明
-          <textarea id="flaw" placeholder="比如：屏幕有一道细划痕，不影响使用">屏幕有一道轻微细划痕，不影响使用</textarea>
+        <label>瑕疵/注意事项
+          <textarea id="flaw" placeholder="比如：屏幕有细划痕 / 不代写作业 / 不承诺收益">屏幕有一道轻微细划痕，不影响使用</textarea>
         </label>
-        <label>出售原因
-          <input id="reason" value="闲置不用" placeholder="比如：闲置不用、换了同类产品、搬家清理">
+        <label>出售原因/适合人群
+          <input id="reason" value="闲置不用" placeholder="比如：闲置不用 / 适合新手卖家 / 适合学生汇报">
+        </label>
+        <label>文案口吻
+          <select id="tone">
+            <option value="真实个人卖家，朴素可信">真实个人卖家，朴素可信</option>
+            <option value="服务接单，清楚专业">服务接单，清楚专业</option>
+            <option value="低价体验，简单直接">低价体验，简单直接</option>
+            <option value="本地服务，稳妥接地气">本地服务，稳妥接地气</option>
+          </select>
         </label>
       </div>
       <button id="copy">复制已填好的提示词</button>
@@ -250,7 +292,7 @@
     <section>
       <h2>怎么用</h2>
       <div class="list">
-        <div class="item"><b class="num">1</b><div><strong>填写商品信息</strong><span>在上面的输入框里填商品、成色、价格、配件和瑕疵。</span></div></div>
+        <div class="item"><b class="num">1</b><div><strong>填写发布信息</strong><span>先选发布类型，再填名称、价格、包含内容和注意事项。</span></div></div>
         <div class="item"><b class="num">2</b><div><strong>复制提示词</strong><span>点击“复制已填好的提示词”，复制的是完整内容。</span></div></div>
         <div class="item"><b class="num">3</b><div><strong>粘贴到 AI</strong><span>豆包、DeepSeek、Kimi、通义千问任选一个。</span></div></div>
         <div class="item"><b class="num">4</b><div><strong>检查后发布</strong><span>删掉不真实的句子，再配真实图片上架。</span></div></div>
@@ -258,10 +300,10 @@
       <p class="note">说明：这不是软件，也不是课程；不承诺成交、不承诺爆单。它只帮你把商品信息整理成更清楚的发布文案。</p>
     </section>
 
-    <footer>闲鱼卖货文案 AI 模板包 · 极简版</footer>
+    <footer>闲鱼发布文案 AI 助手 · 极简版</footer>
   </main>
   <script>
-    const fields = ["name", "condition", "price", "accessories", "flaw", "reason"];
+    const fields = ["type", "name", "condition", "price", "accessories", "flaw", "reason", "tone"];
     const prompt = document.getElementById("prompt");
 
     function valueOf(id) {
@@ -270,25 +312,33 @@
     }
 
     function buildPrompt() {
-      return `你是一个认真负责的闲鱼商品文案助手。请根据下面的信息，生成一份可修改的闲鱼商品发布内容。
+      return `你是一个认真负责的闲鱼发布文案助手。请根据下面的信息，生成一份可修改的闲鱼发布内容。
 
-【商品名称】${valueOf("name")}
-【新旧程度】${valueOf("condition")}
+【发布类型】${valueOf("type")}
+【商品/服务名称】${valueOf("name")}
+【成色/交付方式】${valueOf("condition")}
 【想卖的价格】${valueOf("price")}
-【配件情况】${valueOf("accessories")}
-【瑕疵/其他说明】${valueOf("flaw")}
-【出售原因】${valueOf("reason")}
+【配件/包含内容】${valueOf("accessories")}
+【瑕疵/注意事项】${valueOf("flaw")}
+【出售原因/适合人群】${valueOf("reason")}
+【希望口吻】${valueOf("tone")}
 
 请输出：
-1. 标题：30字以内，包含品牌/型号/卖点/关键词，方便买家搜索。
-2. 商品描述：150字左右，用真实口吻写清型号、使用情况、成色、出售原因、配件、瑕疵。
+1. 标题：30字以内，包含核心关键词，方便买家搜索。
+2. 描述：根据发布类型来写。
+   - 如果是二手闲置/现货实物：写清成色、使用情况、配件、瑕疵和出售原因。
+   - 如果是虚拟资料/教程资源：写清资料包含什么、适合谁、交付方式和注意事项，不承诺收益。
+   - 如果是技能服务/接单：写清服务内容、交付流程、交付周期、修改范围和注意事项。
+   - 如果是本地上门/到店服务：写清服务范围、服务项目、预约方式、价格说明和注意事项。
+   - 如果是小商品现货：写清规格、用途、数量、发货方式和售后说明。
 3. 底部标签：5个，贴合买家可能搜索的词。
-4. 交易提示：语气温和，不夸大，不催单，提醒买家看清楚再拍。
+4. 交易提示：语气温和，不夸大，不催单，提醒买家先沟通清楚再拍。
 
 要求：
 - 不要写虚假承诺。
-- 不要把瑕疵藏起来。
-- 语气像真实个人卖家，不要像广告。`;
+- 不要绕开平台交易规则。
+- 不要使用“闭眼入”“狠狠爱了”“秒杀全网”“保证赚钱”等夸张营销词。
+- 语气要像真人发布，清楚、具体、可信，不要像广告。`;
     }
 
     function refreshPrompt() {
